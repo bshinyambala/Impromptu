@@ -26,7 +26,7 @@ export default StyleSheet.create({
     backgroundColor: Color.transparent,
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'baseline',
     paddingBottom: '5%',
     borderWidth: 1,
