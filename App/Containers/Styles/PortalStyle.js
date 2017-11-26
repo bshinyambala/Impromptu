@@ -5,7 +5,7 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.banner
   },
   header: {
     paddingTop: 30,
@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   row: {
     flex: 1,
-    backgroundColor: Colors.fire,
+    backgroundColor: Colors.transparent,
     marginVertical: Metrics.doubleBaseMargin,
     justifyContent: 'center',
     width: 100,
@@ -21,10 +21,12 @@ export default StyleSheet.create({
     margin: 10,
     padding: 5,
     paddingVertical: 10,
-    borderBottomLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 0,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 0,
     borderColor: Colors.snow,
-    borderWidth: 5
+    borderWidth: 2
   },
   boldLabel: {
     fontFamily: 'Cochin',

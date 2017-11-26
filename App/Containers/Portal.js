@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 import styles from './Styles/PortalStyle'
 import PlayPreview from '../Components/PlayPreview'
 import Motivational from '../Components/Motivational'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import Color from '../Themes/Colors'
 
 class Portal extends React.PureComponent {
   /* ***********************************************************
@@ -17,12 +19,12 @@ class Portal extends React.PureComponent {
   *************************************************************/
   state = {
     dataObjects: [
-      {title: 'I know what I\'m doin!', description: ''},
-      {title: 'I feel naughty!', description: ''},
-      {title: 'Ain\'t nobody got time', description: ''},
-      {title: 'Mommy help!', description: ''},
-      {title: 'I know what I\'m doin!', description: ''},
-      {title: 'Mommy help!', description: ''}
+      {title: 'credit-card', description: 'Money Talks!'},
+      {title: 'chemistry', description: 'Poison Me!'},
+      {title: 'graduation', description: 'Large Party'},
+      {title: 'hourglass', description: 'Ain\'t nobody go time for that!'},
+      {title: 'fire', description: 'Muy Caliente!'},
+      {title: 'bell', description: 'Happy Hour Y\'all!'}
     ]
   }
 
@@ -37,8 +39,8 @@ class Portal extends React.PureComponent {
   renderRow ({item}) {
     return (
       <TouchableOpacity style={styles.row}>
-        <Text style={styles.boldLabel}>{item.title}</Text>
-        <Text style={styles.label}>{item.description}</Text>
+        <Icon style={styles.boldLabel} name={item.title} size={50} color={Color.silver} />
+        <Text style={styles.boldLabel} >{item.description}</Text>
       </TouchableOpacity>
     )
   }
