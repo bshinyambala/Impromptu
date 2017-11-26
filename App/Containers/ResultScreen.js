@@ -6,15 +6,12 @@ import { connect } from 'react-redux'
 
 // Styles
 import styles from './Styles/ResultScreenStyle'
+import Restaurant from '../Components/Restaurant'
 
 class ResultScreen extends Component {
   render () {
     return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>ResultScreen</Text>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <Restaurant />
     )
   }
 }

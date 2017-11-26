@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import styles from './Styles/MotivationalStyle'
 
 export default class Motivational extends Component {
@@ -17,9 +17,8 @@ export default class Motivational extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text>Motivational Component</Text>
-      </View>
+      <Text style={[styles.label, styles.sectionHeader, styles.header, styles.container]}> Hello!!, will you please make up your mind
+          already!!!!!?</Text>
     )
   }
 }

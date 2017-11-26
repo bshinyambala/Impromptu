@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 // import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
+import {Text} from 'react-native'
 import styles from './Styles/PlayPreviewStyle'
 
 export default class PlayPreview extends Component {
@@ -17,9 +17,7 @@ export default class PlayPreview extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text>PlayPreview Component</Text>
-      </View>
+      <Text style={[styles.label, styles.container ]}>PlayPreview Component</Text>
     )
   }
 }

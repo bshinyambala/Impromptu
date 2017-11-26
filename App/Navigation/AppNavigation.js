@@ -13,7 +13,7 @@ const PrimaryNav = StackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'Portal',
+  initialRouteName: 'ResultScreen',
   navigationOptions: {
     headerStyle: styles.header
   }

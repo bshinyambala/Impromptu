@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 
 // Styles
 import styles from './Styles/PortalStyle'
+import PlayPreview from '../Components/PlayPreview'
+import Motivational from '../Components/Motivational'
 
 class Portal extends React.PureComponent {
   /* ***********************************************************
@@ -18,6 +20,8 @@ class Portal extends React.PureComponent {
       {title: 'I know what I\'m doin!', description: ''},
       {title: 'I feel naughty!', description: ''},
       {title: 'Ain\'t nobody got time', description: ''},
+      {title: 'Mommy help!', description: ''},
+      {title: 'I know what I\'m doin!', description: ''},
       {title: 'Mommy help!', description: ''}
     ]
   }
@@ -46,18 +50,16 @@ class Portal extends React.PureComponent {
   *************************************************************/
   // Render a header?
   renderHeader = () =>
-    <Text style={[styles.label, styles.sectionHeader, styles.header]}> Hello!!, will you please make up your mind already?</Text>
-
+    <Motivational />
   // Render a footer?
   renderFooter = () =>
-    <Text style={[styles.label, styles.sectionHeader]}> - Footer - </Text>
-
+    <PlayPreview />
   // Show this when data is empty
   renderEmpty = () =>
     <Text style={styles.label}> - Nothing to See Here - </Text>
 
   renderSeparator = () =>
-    <Text style={styles.label}> </Text>
+    <View style={styles.divider} />
 
   // The default function if no Key is provided is index
   // an identifiable key is important if you plan on
