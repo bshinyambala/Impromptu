@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: Color.transparent
+    backgroundColor: Color.snow
   },
   map: {
     // For Android :/

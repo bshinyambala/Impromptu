@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Image, Text, TouchableOpacity } from 'react-native'
+import { View, Image, Text, TouchableOpacity, Share, Linking } from 'react-native'
 import styles from './Styles/RestaurantStyle'
 import StoreLocator from './StoreLocator'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import Color from '../Themes/Colors'
+import getDirections from 'react-native-google-maps-directions'
+import call from 'react-native-phone-call'
 
 export default class Restaurant extends Component {
   // Prop type warnings
@@ -17,9 +20,54 @@ export default class Restaurant extends Component {
     restaurant: require('../Fixtures/restaurant.json')
   }
 
+  getDirections () {
+    const {restaurant} = require('../Fixtures/restaurant.json')
+    navigator.geolocation.getCurrentPosition((position) => {
+      const currentPosition = JSON.stringify(position)
+      const data = {
+        source: {
+          latitude: currentPosition.latitude,
+          longitude: currentPosition.longitude
+        },
+        destination: {
+          latitude: +restaurant.location.latitude,
+          longitude: +restaurant.location.longitude
+        },
+        params: [
+          {
+            key: 'address',
+            value: restaurant.location.address
+          }
+        ]
+      }
+      getDirections(data)
+    },
+     (error) => alert(error.message),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )
+  }
+
+  callRestaurant () {
+    const args = {
+      number: '8168784484',
+      prompt: true
+    }
+
+    call(args).catch(console.error)
+  }
+
+  goToWebsite () {
+    const {restaurant} = require('../Fixtures/restaurant.json')
+    Linking.openURL(restaurant.url).catch(err => console.error('An error occurred', err))
+  }
+
+  share () {
+    const {restaurant} = require('../Fixtures/restaurant.json')
+    Share.share({message: restaurant.location.address, title: restaurant.name}, {})
+  }
+
   render () {
     const {restaurant} = require('../Fixtures/restaurant.json')
-    console.tron.log(restaurant)
     return (
       // Try setting `alignItems` to 'flex-start'
       // Try setting `justifyContent` to `flex-end`.
@@ -33,20 +81,20 @@ export default class Restaurant extends Component {
         </TouchableOpacity>
         <View style={[styles.pit]}>
           <View style={[styles.actions]}>
-            <TouchableOpacity style={styles.iconButton} >
-              <Icon style={styles.action} name='phone' size={25} color={Color.silver} />
+            <TouchableOpacity style={styles.iconButton}>
+              <Icon style={styles.action} name='phone' size={25} color={Color.silver} onPress={this.callRestaurant} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <Icon style={styles.action} name='globe' size={25} color={Color.silver} />
+              <Icon style={styles.action} name='globe' size={25} color={Color.silver} onPress={this.goToWebsite} />
             </TouchableOpacity>
             <TouchableOpacity>
               <Icon style={styles.action} name='menu' size={25} color={Color.silver} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <Icon style={styles.action} name='share-alt' size={30} color={Color.silver} />
+              <Icon style={styles.action} name='share-alt' size={30} color={Color.silver} onPress={this.share} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <Icon style={styles.action} name='directions' size={30} color={Color.silver} />
+              <Icon style={styles.action} name='directions' size={30} color={Color.silver} onPress={this.getDirections} />
             </TouchableOpacity>
           </View>
           <Text style={styles.label}>{restaurant.name}</Text>

@@ -11,11 +11,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 0,
     borderWidth: 3,
-    borderColor: Color.background,
-    backgroundColor: Color.transparent
+    borderColor: Color.transparent,
+    backgroundColor: Color.snow,
+    padding: '20%'
   },
   calloutText: {
-    color: Color.bloodOrange,
+    color: Color.background,
     width: '100%',
     height: '100%',
     fontFamily: 'Cochin'

@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import React from 'react'
-import { } from 'react-native'
+import {} from 'react-native'
 import MapView from 'react-native-maps'
 import StoreLocatorCallout from './StoreLocatorCallout'
 import Styles from './Styles/StoreLocatorStyles'
+import getDirections from 'react-native-google-maps-directions'
 
 // Generate this MapHelpers file with `ignite generate map-utilities`
 // You must have Ramda as a dev dependency to use this.
@@ -33,7 +35,12 @@ class StoreLocator extends React.Component {
     const restaurant = require('../Fixtures/restaurant.json')
     const location = restaurant.restaurant.location
     const locations = [
-      { title: restaurant.restaurant.name, address: location.address, latitude: +location.latitude, longitude: +location.longitude }
+      {
+        title: restaurant.restaurant.name,
+        address: location.address,
+        latitude: +location.latitude,
+        longitude: +location.longitude
+      }
     ]
 
     /* ***********************************************************
@@ -43,7 +50,7 @@ class StoreLocator extends React.Component {
     * You can generate a handy `calculateRegion` function with
     * `ignite generate map-utilities`
     *************************************************************/
-    const region = calculateRegion(locations, { latPadding: 0.05, longPadding: 0.05 })
+    const region = calculateRegion(locations, {latPadding: 0.05, longPadding: 0.05})
     // const region = {latitude: 123, longitude: 123, latitudeDelta: 0.1, longitudeDelta: 0.1}
     this.state = {
       region,
@@ -86,26 +93,29 @@ class StoreLocator extends React.Component {
     * Configure what will happen (if anything) when the user
     * presses your callout.
     *************************************************************/
-    const data = {
-      source: {
-        latitude: -33.8356372,
-        longitude: 18.6947617
-      },
-      destination: {
-        latitude: -33.8600024,
-        longitude: 18.697459
-      },
-      params: [
-        {
-          key: 'dirflg',
-          value: 'w'
-        }
-      ]
-    }
-
-    // getDirections(data)
-
-    console.tron.log(location) // Reactotron
+    navigator.geolocation.getCurrentPosition((position) => {
+      const currentPosition = JSON.stringify(position)
+      const data = {
+        source: {
+          latitude: currentPosition.latitude,
+          longitude: currentPosition.longitude
+        },
+        destination: {
+          latitude: location.latitude,
+          longitude: location.longitude
+        },
+        params: [
+          {
+            key: 'address',
+            value: location.address
+          }
+        ]
+      }
+      getDirections(data)
+    },
+      (error) => alert(error.message),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )
   }
 
   renderMapMarkers (location) {
@@ -116,7 +126,7 @@ class StoreLocator extends React.Component {
     *************************************************************/
     return (
       <MapView.Marker key={location.title} coordinate={{latitude: location.latitude, longitude: location.longitude}}>
-        <StoreLocatorCallout location={location} onPress={this.calloutPress} />
+        <StoreLocatorCallout location={location} onPress={this.calloutPress}/>
       </MapView.Marker>
     )
   }
