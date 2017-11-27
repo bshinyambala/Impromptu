@@ -11,7 +11,8 @@ import { GithubTypes } from '../Redux/GithubRedux'
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
-import { getUserAvatar } from './GithubSagas'
+import { getRestaurants } from './RestaurantsSagas'
+import { RestaurantsTypes } from '../Redux/RestaurantsRedux'
 
 /* ------------- API ------------- */
 
@@ -27,6 +28,6 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(RestaurantsTypes.RESTAURANTS_REQUEST, getRestaurants, api)
   ])
 }

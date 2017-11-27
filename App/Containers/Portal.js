@@ -10,6 +10,7 @@ import PlayPreview from '../Components/PlayPreview'
 import Motivational from '../Components/Motivational'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import Color from '../Themes/Colors'
+import NavigationActions from 'react-navigation'
 
 class Portal extends React.PureComponent {
   /* ***********************************************************
@@ -38,7 +39,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <TouchableOpacity style={styles.row}>
+      <TouchableOpacity style={styles.row} >
         <Icon style={styles.boldLabel} name={item.title} size={50} color={Color.silver} />
         <Text style={styles.boldLabel} >{item.description}</Text>
       </TouchableOpacity>
@@ -113,6 +114,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getResult: () => {
+      dispatch(NavigationActions.navigate({routeName: 'LaunchScreen', params: {}, action: {}}))
+    }
   }
 }
 

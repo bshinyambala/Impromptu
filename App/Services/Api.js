@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   // ------
   // STEP 1
   // ------
@@ -14,7 +14,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     baseURL,
     // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'user-key': '564a59fac542e7f275333fa0fcdc35ff'
     },
     // 10 second timeout...
     timeout: 10000
@@ -34,9 +35,9 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getDailyMenu = (restaurantId) => api.get('dailymenu', {res_id: restaurantId})
+  const getLocationDetails = () => api.get('')
+  const getRestaurants = (filter) => api.get('search', filter)
 
   // ------
   // STEP 3
@@ -52,9 +53,9 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   return {
     // a list of the API functions from step 2
-    getRoot,
-    getRate,
-    getUser
+    getRestaurants,
+    getLocationDetails,
+    getDailyMenu
   }
 }
 

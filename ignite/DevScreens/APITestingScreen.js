@@ -12,8 +12,7 @@ import styles from './Styles/APITestingScreenStyles'
 
 // API buttons here:
 const endpoints = [
-  { label: 'Github Root', endpoint: 'getRoot' },
-  { label: 'Github Rate Limit', endpoint: 'getRate' },
+  { label: 'Get Restaurants', endpoint: 'getRestaurants', args: ['']},
   { label: 'Search User (gantman)', endpoint: 'getUser', args: ['gantman'] },
   { label: 'Search User (skellock)', endpoint: 'getUser', args: ['skellock'] }
 ]
@@ -105,15 +104,17 @@ class APIResult extends React.Component {
   }
 
   renderView () {
+    console.tron.debug('State message')
+    console.tron.debug(JSON.parse(this.state.message).restaurants[0])
     return (
       <ScrollView style={{ top: 0, bottom: 0, left: 0, right: 0, position: 'absolute' }} overflow='hidden'>
         <TouchableOpacity
           style={{backgroundColor: 'white', padding: 20}}
           onPress={this.onApiPress}
         >
-          <Text>{this.state.title} Response:</Text>
+          <Text>{this.state.title}  Response:</Text>
           <Text allowFontScaling={false} style={{fontFamily: 'CourierNewPS-BoldMT', fontSize: 10}}>
-            {this.state.message}
+            {JSON.stringify(JSON.parse(this.state.message).restaurants[0])}
           </Text>
         </TouchableOpacity>
       </ScrollView>

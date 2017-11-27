@@ -1,24 +1,21 @@
 export default {
   // Functions return fixtures
-  getRoot: () => {
+  getDailyMenu: (restaurantId) => {
     return {
       ok: true,
-      data: require('../Fixtures/root.json')
+      data: ''// require('../Fixtures/dailymenu.json')
     }
   },
-  getRate: () => {
+  getLocationDetails: () => {
     return {
       ok: true,
-      data: require('../Fixtures/rateLimit.json')
+      data: ''// require('../Fixtures/locationdetails.json')
     }
   },
-  getUser: (username) => {
-    // This fixture only supports gantman or else returns skellock
-    const gantmanData = require('../Fixtures/gantman.json')
-    const skellockData = require('../Fixtures/skellock.json')
+  getRestaurants: (filter) => {
     return {
       ok: true,
-      data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
+      data: require('../Fixtures/restaurants.json')
     }
   }
 }

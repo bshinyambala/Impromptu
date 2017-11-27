@@ -16,6 +16,8 @@ export default class PlayPreview extends Component {
   // }
 
   render () {
+    console.tron.log('Logging result')
+    console.tron.debug(this.props)
     return (
       <Text style={[styles.label, styles.container ]}>PlayPreview Component</Text>
     )
