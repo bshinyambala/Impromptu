@@ -11,6 +11,7 @@ import Motivational from '../Components/Motivational'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import Color from '../Themes/Colors'
 import NavigationActions from 'react-navigation'
+import PortalButton from '../Components/PortalButton'
 
 class Portal extends React.PureComponent {
   /* ***********************************************************
@@ -39,10 +40,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <TouchableOpacity style={styles.row} >
-        <Icon style={styles.boldLabel} name={item.title} size={50} color={Color.silver} />
-        <Text style={styles.boldLabel} >{item.description}</Text>
-      </TouchableOpacity>
+      <PortalButton title={item.title} description={item.description} />
     )
   }
 
