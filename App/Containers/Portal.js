@@ -19,12 +19,12 @@ class Portal extends React.PureComponent {
   *************************************************************/
   state = {
     dataObjects: [
-      {title: 'credit-card', description: 'Money Talks!'},
-      {title: 'chemistry', description: 'Poison Me!'},
-      {title: 'graduation', description: 'Large Party'},
-      {title: 'hourglass', description: 'Ain\'t nobody go time for that!'},
-      {title: 'fire', description: 'Muy Caliente!'},
-      {title: 'bell', description: 'Happy Hour Y\'all!'}
+      {icon: 'credit-card', description: 'Money Talks!'},
+      {icon: 'chemistry', description: 'Poison Me!'},
+      {icon: 'graduation', description: 'Large Party'},
+      {icon: 'hourglass', description: 'Ain\'t nobody go time for that!'},
+      {icon: 'fire', description: 'Muy Caliente!'},
+      {icon: 'bell', description: 'Happy Hour Y\'all!'}
     ],
     getter: () => {}
   }
@@ -39,7 +39,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <Category title={item.title} description={item.description} />
+      <Category title={item.icon} description={item.description} />
     )
   }
 

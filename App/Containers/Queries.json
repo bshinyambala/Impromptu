@@ -1,0 +1,11 @@
+{
+  "queries" :
+  [ {"id": 1, "icon": "fire", "name" : "Spicy", "description": "", "query": ""},
+    {"id": 1, "icon": "credit-card", "name" : "Spicy", "description": "", "query": ""},
+    {"id": 1, "icon": "graduation", "name" : "Spicy", "description": "", "query": ""},
+    {"id": 1, "icon": "hourglass", "name" : "Spicy", "description": "", "query": ""},
+    {"id": 1, "icon": "bell", "name" : "Spicy", "description": "", "query": ""},
+    {"id": 1, "icon": "chemistry", "name" : "Spicy", "description": "", "query": ""}
+  ]
+}
+
