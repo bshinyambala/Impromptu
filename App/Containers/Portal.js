@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 
 // More info here: https://facebook.github.io/react-native/docs/flatlist.html
@@ -8,10 +8,8 @@ import { connect } from 'react-redux'
 import styles from './Styles/PortalStyle'
 import PlayPreview from '../Components/PlayPreview'
 import Motivational from '../Components/Motivational'
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import Color from '../Themes/Colors'
-import NavigationActions from 'react-navigation'
-import PortalButton from '../Components/PortalButton'
+import {NavigationActions} from 'react-navigation'
+import Category from '../Containers/Category'
 
 class Portal extends React.PureComponent {
   /* ***********************************************************
@@ -27,7 +25,8 @@ class Portal extends React.PureComponent {
       {title: 'hourglass', description: 'Ain\'t nobody go time for that!'},
       {title: 'fire', description: 'Muy Caliente!'},
       {title: 'bell', description: 'Happy Hour Y\'all!'}
-    ]
+    ],
+    getter: () => {}
   }
 
   /* ***********************************************************
@@ -40,7 +39,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <PortalButton title={item.title} description={item.description} />
+      <Category title={item.title} description={item.description} />
     )
   }
 
@@ -85,6 +84,9 @@ class Portal extends React.PureComponent {
   // )}
 
   render () {
+    // const {getResult} = this.props
+    // getResult()
+    console.tron.debug(this.state.getter)
     return (
       <View style={styles.container}>
         <FlatList
@@ -106,15 +108,12 @@ class Portal extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    // ...redux state to props here
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getResult: () => {
-      dispatch(NavigationActions.navigate({routeName: 'LaunchScreen', params: {}, action: {}}))
-    }
+    getResult: () => dispatch(NavigationActions.navigate({ routeName: 'ResultScreen' }))
   }
 }
 

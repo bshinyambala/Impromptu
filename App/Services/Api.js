@@ -38,6 +38,10 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   const getDailyMenu = (restaurantId) => api.get('dailymenu', {res_id: restaurantId})
   const getLocationDetails = () => api.get('')
   const getRestaurants = (filter) => api.get('search', filter)
+  const getSelection = () => {
+    console.tron.debug('tooooosdsadoasoso')
+    return require('../Fixtures/restaurant.json')
+  }
 
   // ------
   // STEP 3
@@ -54,6 +58,7 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   return {
     // a list of the API functions from step 2
     getRestaurants,
+    getSelection,
     getLocationDetails,
     getDailyMenu
   }

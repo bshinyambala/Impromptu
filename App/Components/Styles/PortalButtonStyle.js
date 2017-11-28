@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   row: {
     flex: 1,
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.fire,
     marginVertical: Metrics.doubleBaseMargin,
     justifyContent: 'center',
     width: 100,
@@ -30,5 +30,5 @@ export default StyleSheet.create({
     color: Colors.snow,
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
-  },
+  }
 })
