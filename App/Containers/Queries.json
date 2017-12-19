@@ -1,11 +1,11 @@
 {
   "queries" :
-  [ {"id": 1, "icon": "fire", "name" : "Spicy", "description": "", "query": ""},
-    {"id": 1, "icon": "credit-card", "name" : "Spicy", "description": "", "query": ""},
-    {"id": 1, "icon": "graduation", "name" : "Spicy", "description": "", "query": ""},
-    {"id": 1, "icon": "hourglass", "name" : "Spicy", "description": "", "query": ""},
-    {"id": 1, "icon": "bell", "name" : "Spicy", "description": "", "query": ""},
-    {"id": 1, "icon": "chemistry", "name" : "Spicy", "description": "", "query": ""}
+  [ {"id": 1, "icon": "fire", "name" : "Nearby", "description": "", "query": ""},
+    {"id": 1, "icon": "credit-card", "name" : "Under $30 for 2 People", "description": "", "query": ""},
+    {"id": 1, "icon": "graduation", "name" : "Fine Dining", "description": "", "query": ""},
+    {"id": 1, "icon": "hourglass", "name" : "To Go / Delivery", "description": "", "query": ""},
+    {"id": 1, "icon": "bell", "name" : "Vegeterian", "description": "", "query": ""},
+    {"id": 1, "icon": "chemistry", "name" : "Lot's of meat", "description": "", "query": ""}
   ]
 }
 

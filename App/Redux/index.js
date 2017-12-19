@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { locationReducer as location } from 'redux-saga-location';
 import configureStore from './CreateStore'
 import rootSaga from '../Sagas/'
 
@@ -7,7 +8,8 @@ export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
   restaurants: require('./RestaurantsRedux').reducer,
   selector: require('./SelectionRedux').reducer,
-  search: require('./SearchRedux').reducer
+  search: require('./SearchRedux').reducer,
+  location
 })
 
 export default () => {

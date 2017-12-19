@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import styles from './Styles/PortalStyle'
 import PlayPreview from '../Components/PlayPreview'
 import Motivational from '../Components/Motivational'
-import {NavigationActions} from 'react-navigation'
 import Category from '../Containers/Category'
 
 class Portal extends React.PureComponent {
@@ -19,14 +18,13 @@ class Portal extends React.PureComponent {
   *************************************************************/
   state = {
     dataObjects: [
-      {icon: 'credit-card', description: 'Money Talks!'},
-      {icon: 'chemistry', description: 'Poison Me!'},
-      {icon: 'graduation', description: 'Large Party'},
-      {icon: 'hourglass', description: 'Ain\'t nobody go time for that!'},
-      {icon: 'fire', description: 'Muy Caliente!'},
-      {icon: 'bell', description: 'Happy Hour Y\'all!'}
-    ],
-    getter: () => {}
+      {icon: 'fire', description: 'Fire'},
+      {icon: 'fire', description: 'Fire'},
+      {icon: 'fire', description: 'Fire'},
+      {icon: 'fire', description: 'Fire'},
+      {icon: 'fire', description: 'Fire'}
+
+    ]
   }
 
   /* ***********************************************************
@@ -39,7 +37,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <Category title={item.icon} description={item.description} />
+      <Category title={item.icon} description={item.description}/>
     )
   }
 
@@ -50,16 +48,16 @@ class Portal extends React.PureComponent {
   *************************************************************/
   // Render a header?
   renderHeader = () =>
-    <Motivational />
+    <Motivational/>
   // Render a footer?
   renderFooter = () =>
-    <PlayPreview />
+    <PlayPreview/>
   // Show this when data is empty
   renderEmpty = () =>
     <Text style={styles.label}> - Nothing to See Here - </Text>
 
   renderSeparator = () =>
-    <View style={styles.divider} />
+    <View style={styles.divider}/>
 
   // The default function if no Key is provided is index
   // an identifiable key is important if you plan on
@@ -84,16 +82,14 @@ class Portal extends React.PureComponent {
   // )}
 
   render () {
-    // const {getResult} = this.props
-    // getResult()
-    console.tron.debug(this.state.getter)
     return (
+
       <View style={styles.container}>
         <FlatList
           contentContainerStyle={styles.listContent}
           data={this.state.dataObjects}
           renderItem={this.renderRow}
-          numColumns={2}
+          numColumns={1}
           keyExtractor={this.keyExtractor}
           initialNumToRender={this.oneScreensWorth}
           ListHeaderComponent={this.renderHeader}
@@ -108,13 +104,12 @@ class Portal extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   return {
+    location: state.location
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    getResult: () => dispatch(NavigationActions.navigate({ routeName: 'ResultScreen' }))
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Portal)

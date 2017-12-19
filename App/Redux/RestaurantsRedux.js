@@ -25,22 +25,19 @@ export const INITIAL_STATE = Immutable({
 
 // request the data from an api
 export const request = (state, { data }) => {
-  state.merge({fetching: true, data, payload: null})
+  return state.merge({fetching: true, data, payload: null})
 }
 
 // successful api lookup
 export const success = (state, action) => {
   const { payload } = action
-  console.tron.debug(state)
-  console.tron.debug(action)
-  console.tron.debug(payload)
-  console.tron.debug(payload)
   return state.merge({ fetching: false, error: null, payload })
 }
 
 // Something went wrong somewhere.
-export const failure = state =>
-  state.merge({ fetching: false, error: true, payload: null })
+export const failure = state => {
+  state.merge({fetching: false, error: true, payload: null})
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 

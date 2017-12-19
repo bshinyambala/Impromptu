@@ -12,8 +12,9 @@
 
 import { call, put } from 'redux-saga/effects'
 import RestaurantsActions from '../Redux/RestaurantsRedux'
+import {NavigationActions} from 'react-navigation'
 
-export function * getRestaurants (api, action) {
+export function * pickRestaurant (api, action) {
   const { data } = action
   // make the call to the api
   const response = yield call(api.getRestaurants, data)
@@ -22,7 +23,9 @@ export function * getRestaurants (api, action) {
   if (response.ok) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
-    yield put(RestaurantsActions.restaurantsSuccess(response.data))
+    const restaurant = yield call(api.selectOne, response.data)
+    yield put(RestaurantsActions.restaurantsSuccess(restaurant))
+    yield put(NavigationActions.navigate({routeName: 'ResultScreen'}))
   } else {
     yield put(RestaurantsActions.restaurantsFailure())
   }

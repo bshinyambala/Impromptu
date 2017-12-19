@@ -12,7 +12,7 @@ import styles from './Styles/APITestingScreenStyles'
 
 // API buttons here:
 const endpoints = [
-  { label: 'Get Restaurants', endpoint: 'getRestaurants', args: ['']},
+  { label: 'Get Restaurants', endpoint: 'pickRestaurant', args: ['']},
   { label: 'Search User (gantman)', endpoint: 'getUser', args: ['gantman'] },
   { label: 'Search User (skellock)', endpoint: 'getUser', args: ['skellock'] }
 ]

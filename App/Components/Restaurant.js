@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, Image, Text, TouchableOpacity, Share, Linking } from 'react-native'
+import {Examples} from '@shoutem/ui'
 import styles from './Styles/RestaurantStyle'
 import StoreLocator from './StoreLocator'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
@@ -17,11 +18,11 @@ export default class Restaurant extends Component {
 
   // Defaults for props
   static defaultProps = {
-    restaurant: require('../Fixtures/restaurant.json')
+    restaurant: {}
   }
 
   getDirections () {
-    const {restaurant} = require('../Fixtures/restaurant.json')
+    const {restaurant} = this.props
     navigator.geolocation.getCurrentPosition((position) => {
       const currentPosition = JSON.stringify(position)
       const data = {
@@ -57,17 +58,17 @@ export default class Restaurant extends Component {
   }
 
   goToWebsite () {
-    const {restaurant} = require('../Fixtures/restaurant.json')
+    const {restaurant} = this.props
     Linking.openURL(restaurant.url).catch(err => console.error('An error occurred', err))
   }
 
   share () {
-    const {restaurant} = require('../Fixtures/restaurant.json')
+    const {restaurant} = this.props
     Share.share({message: restaurant.location.address, title: restaurant.name}, {})
   }
 
   render () {
-    const {restaurant} = require('../Fixtures/restaurant.json')
+    const {restaurant} = this.props
     return (
       // Try setting `alignItems` to 'flex-start'
       // Try setting `justifyContent` to `flex-end`.

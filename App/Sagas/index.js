@@ -1,4 +1,4 @@
-import { takeLatest, all } from 'redux-saga/effects'
+import { takeLatest, all, spawn } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
@@ -6,12 +6,11 @@ import DebugConfig from '../Config/DebugConfig'
 /* ------------- Types ------------- */
 
 import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
 
 /* ------------- Sagas ------------- */
-
+import {watchLocationChannel} from 'redux-saga-location'
 import { startup } from './StartupSagas'
-import { getRestaurants } from './RestaurantsSagas'
+import { pickRestaurant } from './RestaurantSagas'
 import { RestaurantsTypes } from '../Redux/RestaurantsRedux'
 import { SelectionTypes } from '../Redux/SelectionRedux'
 
@@ -29,7 +28,8 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(RestaurantsTypes.RESTAURANTS_REQUEST, getRestaurants, api),
-    takeLatest(SelectionTypes.SELECTION_REQUEST, api)
+    takeLatest(RestaurantsTypes.RESTAURANTS_REQUEST, pickRestaurant, api),
+    takeLatest(SelectionTypes.SELECTION_REQUEST, api),
+    spawn(watchLocationChannel)
   ])
 }

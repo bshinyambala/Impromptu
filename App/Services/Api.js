@@ -35,12 +35,13 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getDailyMenu = (restaurantId) => api.get('dailymenu', {res_id: restaurantId})
-  const getLocationDetails = () => api.get('')
   const getRestaurants = (filter) => api.get('search', filter)
-  const getSelection = () => {
-    console.tron.debug('tooooosdsadoasoso')
-    return require('../Fixtures/restaurant.json')
+  const selectOne = (response) => {
+    const validPicks = response.restaurants.filter(restaurant => {
+      return true
+    })
+    const lotteryPick = Math.floor(Math.random() * validPicks.length)
+    return validPicks[lotteryPick]
   }
 
   // ------
@@ -58,9 +59,7 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   return {
     // a list of the API functions from step 2
     getRestaurants,
-    getSelection,
-    getLocationDetails,
-    getDailyMenu
+    selectOne
   }
 }
 

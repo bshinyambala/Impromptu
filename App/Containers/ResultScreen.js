@@ -11,13 +11,14 @@ import Restaurant from '../Components/Restaurant'
 class ResultScreen extends Component {
   render () {
     return (
-      <Restaurant />
+      <Restaurant restaurant={this.props.restaurant} />
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    restaurant: state.restaurants.payload.restaurant
   }
 }
 
