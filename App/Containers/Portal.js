@@ -37,7 +37,7 @@ class Portal extends React.PureComponent {
   *************************************************************/
   renderRow ({item}) {
     return (
-      <Category title={item.icon} description={item.description}/>
+      <Category title={item.icon} description={item.description} />
     )
   }
 
@@ -48,16 +48,16 @@ class Portal extends React.PureComponent {
   *************************************************************/
   // Render a header?
   renderHeader = () =>
-    <Motivational/>
+    <Motivational />
   // Render a footer?
   renderFooter = () =>
-    <PlayPreview/>
+    <PlayPreview />
   // Show this when data is empty
   renderEmpty = () =>
     <Text style={styles.label}> - Nothing to See Here - </Text>
 
   renderSeparator = () =>
-    <View style={styles.divider}/>
+    <View style={styles.divider} />
 
   // The default function if no Key is provided is index
   // an identifiable key is important if you plan on
